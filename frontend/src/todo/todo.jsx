@@ -43,8 +43,10 @@ export default class Todo extends Component{
 
     handleAdd(){//Tratar erro
         const description = this.state.description
-        axios.post(URL, {description})
-        .then(resp => this.refresh())
+        if(description.trim() !== ''){
+            axios.post(URL, {description})
+            .then(resp => this.refresh())
+        }
     }
 
     handleRemove(todo){
